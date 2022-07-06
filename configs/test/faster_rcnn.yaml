@@ -6,7 +6,7 @@ model:
   name: 'FasterRCNNResNetFPN'
   pth_file: null
   kwargs:
-    architecture: 'resnet34'
+    architecture: 'resnet50'
     num_classes: ${train.datasets.num_classes}
     pretrained_backbone: False
     trainable_backbone_layers: 4

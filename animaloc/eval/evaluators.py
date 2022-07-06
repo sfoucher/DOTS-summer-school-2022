@@ -15,7 +15,7 @@ from ..utils.logger import CustomLogger
 
 from .stitchers import Stitcher
 from .metrics import Metrics
-from .lmds import HerdNetLMDS, MultiChannelsLMDS
+from .lmds import MultiChannelsLMDS
 
 from ..utils.registry import Registry
 

@@ -1,10 +1,9 @@
 # Animaloc
 
 ## Installation
-Create and activate the conda environment
+Install the dependencies
 ```console
-conda env create -f environment.yml
-conda activate animaloc
+pip install -r requirements.txt
 ```
 
 Install the code
@@ -24,7 +23,7 @@ A training session can easily be launched using the `train.py` tool. This tool u
 python tools/train.py
 ```
 
-You can also create your own config file. Save it first into the [`configs/train`](https://github.com/Alexandre-Delplanque/phd-code/tree/main/configs/train) folder and then run:
+You can also create your own config file. Save it first into the `configs/train` folder and then run:
 ```console
 python tools/train.py train=<your config name>
 ```
@@ -37,7 +36,7 @@ python tools/test.py
 ```
 
 
-You can also create your own config file. Save it first into the [`configs/test`](https://github.com/Alexandre-Delplanque/phd-code/tree/main/configs/test) folder and then run:
+You can also create your own config file. Save it first into the `configs/test` folder and then run:
 ```console
 python tools/test.py test=<your config name>
 ```

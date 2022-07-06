@@ -5,7 +5,7 @@ import torch.nn.functional as F
 
 from typing import Tuple, List
 
-__all__ = ['LMDS', 'MultiChannelsLMDS', 'HerdNetLMDS']
+__all__ = ['LMDS', 'MultiChannelsLMDS']
 
 
 class LMDS:

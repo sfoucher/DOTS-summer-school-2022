@@ -9,7 +9,7 @@ model:
   load_from: null
   resume_from: null
   kwargs:
-    architecture: 'resnet34'
+    architecture: 'resnet50'
     num_classes: ${train.datasets.num_classes}
     pretrained_backbone: True
     trainable_backbone_layers: 4

@@ -50,7 +50,7 @@ def show_batch(sample_batched, denormalize=True):
     ax.imshow(grid)
 
     for i in range(batch_size):
-        bboxes = targets_batch[i]['annotations']
+        bboxes = targets_batch[i]['boxes']
         for bbox in bboxes:
             adjusted_bbox = to_xywh([
                 bbox[0].numpy() + i * img_width + (i + 1) * grid_border_size,
