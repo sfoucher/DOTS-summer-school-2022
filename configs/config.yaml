@@ -1,0 +1,3 @@
+defaults:
+  - train: faster_rcnn
+  - test: faster_rcnn
