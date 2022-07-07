@@ -202,12 +202,14 @@ class FasterRCNNStitcher(Stitcher):
         size: Tuple[int,int], 
         overlap: int = 100,
         nms_threshold: float = 0.5,
+        score_threshold: float = 0.0,
         batch_size: int = 1,
         device_name: str = 'cuda',
         ) -> None:
         super().__init__(model, size, overlap=overlap, batch_size=batch_size, device_name=device_name)
         
         self.nms_threshold = nms_threshold
+        self.score_threshold = score_threshold
         self.up = False
 
     @torch.no_grad()
@@ -248,4 +250,12 @@ class FasterRCNNStitcher(Stitcher):
         else:
             indices = torchvision.ops.nms(map['boxes'], map['scores'], self.nms_threshold)
             reduced = dict(boxes=map['boxes'][indices], labels=map['labels'][indices], scores=map['scores'][indices]) 
+            # score thresholding
+            indices = torch.nonzero((reduced['scores'] > self.score_threshold), as_tuple=True)[0]
+            reduced = dict(
+                boxes=reduced['boxes'][indices], 
+                labels=reduced['labels'][indices], 
+                scores=reduced['scores'][indices]
+                )
+            
             return reduced

@@ -12,3 +12,5 @@ scipy==1.6.2
 hydra-core==1.1.0
 fiftyone==0.14.3
 opencv-python==4.5.1.48
+opencv-python-headless==4.5.4.60
+ipywidgets==7.5
