@@ -1,4 +1,4 @@
-wandb_project: 'DOTS-faster-rcnn'
+wandb_project: 'DOTS-summer-school'
 wandb_entity: 'alexandredelplanque'
 seed: 1
 device_name: 'cuda'
@@ -27,8 +27,8 @@ datasets:
   
   train:
     name: 'CSVDataset'
-    csv_file: 'D:/Alexandre/Delplanque_2021/data/train/patches/gt_bbox.csv'
-    root_dir: 'D:/Alexandre/Delplanque_2021/data/train/patches'
+    csv_file: '/content/data/train/gt_bbox.csv'
+    root_dir: '/content/data/train'
     
     sample_on: null
 
@@ -54,8 +54,8 @@ datasets:
 
   validate:
     name: 'CSVDataset'
-    csv_file: 'D:/Alexandre/Delplanque_2021/data/val_big_size_A_B_E_K_WH_WB.csv'
-    root_dir: 'D:/Alexandre/Delplanque_2021/data/val/full'
+    csv_file: '/content/data/val.csv'
+    root_dir: '/content/data/val'
 
     albu_transforms:
       Normalize:
