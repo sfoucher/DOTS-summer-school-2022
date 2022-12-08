@@ -167,7 +167,9 @@ class CSVDataset(Dataset):
                 if self.end_transforms is not None:
                     for trans in self.end_transforms:
                         tr_image, tr_target = trans(tr_image, tr_target)
-
+                # deals with empty boxes, see https://stackoverflow.com/questions/66063046/how-to-train-faster-rcnn-on-dataset-including-negative-data-in-pytorch
+                if len(tr_target['boxes'].shape) != 2: 
+                    tr_target['boxes']=torch.zeros((0, 4), dtype=torch.float32)
                 return tr_image, tr_target
             
             # Points
