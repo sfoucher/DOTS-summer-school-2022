@@ -192,7 +192,9 @@ class Trainer:
         checkpoints: str = 'best',
         select: str = 'min',
         validate_on: str = 'recall',
-        wandb_flag: bool = False
+        wandb_flag: bool = False,
+        train_rpn: bool = True,
+        train_heads: bool= True,
         ) -> torch.nn.Module:
         ''' Start training from epoch 1 
         
@@ -225,7 +227,8 @@ class Trainer:
 
         assert checkpoints in ['best', 'all']
         assert select in ['min', 'max']
-
+        self.train_rpn= train_rpn
+        self.train_heads= train_heads
         lr_scheduler = self._lr_scheduler()
         val_flag = False
 
@@ -477,7 +480,8 @@ class Trainer:
             images, targets = self.prepare_data(images, targets)
 
             self.optimizer.zero_grad()
-
+            self.model.model.rpn.training= self.train_rpn
+            self.model.model.roi_heads.training= self.train_heads
             loss_dict = self.model(images, targets)
 
             if wandb_flag:
