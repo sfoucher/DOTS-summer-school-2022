@@ -93,7 +93,7 @@ class LossWrapper(torch.nn.Module):
 
         try:
             output = self.model(x)
-        except ValueError:
+        except AssertionError:
             output = self.model(x, target)
 
         output_used = output
