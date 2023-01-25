@@ -219,6 +219,8 @@ class Trainer:
                 'mse', 'mae', and 'rmse'. 
                 Defauts to 'recall'
             wandb_flag (bool, optional): set to True to log on Weight & Biases. Defaults to False.
+            train_rpn (bool, optional): set to False to skip the loss computation on the RPN. Defaults to True.
+            train_heads (bool, optional): set to False to skip the loss computation on the last stage. Defaults to True.
         
         Returns:
             torch.nn.Module:
