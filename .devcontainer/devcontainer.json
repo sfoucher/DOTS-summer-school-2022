@@ -1,0 +1,21 @@
+{
+  "image": "mcr.microsoft.com/devcontainers/universal:2.1.1",
+  "hostRequirements": {
+   "cpus": 4,
+   "memory": "32gb" 
+  },
+  "waitFor": "onCreateCommand",
+  "updateContentCommand": ["python3 -m pip uninstall -r req-uninstall.txt -y", "python3 -m pip install -r requirements-colab.txt"],
+  "postCreateCommand": "",
+  "customizations": {
+    "codespaces": {
+      "openFiles": []
+    },
+    "vscode": {
+      "extensions": [
+        "ms-toolsai.jupyter",
+        "ms-python.python"
+      ]
+    }
+  }
+}

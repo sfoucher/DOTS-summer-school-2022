@@ -1,0 +1,21 @@
+torch==1.11.0
+torchvision==0.12.0
+albumentations==1.0.3
+wandb
+# required for fiftyone:
+ipywidgets>=7.5
+fiftyone==0.18.0
+jinja2==3.1.2
+urllib3==1.25.11
+#matplotlib==3.4.1
+#seaborn==0.11.2
+#pillow==8.2.0
+#pandas==1.2.3
+#numpy==1.19.2
+#scikit-learn==1.0.2
+#scipy==1.6.2
+hydra-core==1.1.0
+#fiftyone==0.14.3
+#opencv-python==4.5.1.48
+#opencv-python-headless==4.5.4.60
+ipywidgets==7.5
