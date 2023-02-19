@@ -83,7 +83,7 @@ class ImageToPatches:
         # patches' height & width
         height = min(self.image.size(1),self.size[0])
         width = min(self.image.size(2),self.size[1])
-
+        nbands = self.image.size(0)
         # unfold on height 
         height_fold = self.image.unfold(1, height, height - self.overlap)
 
@@ -91,7 +91,7 @@ class ImageToPatches:
         residual = self._img_residual(self.image.size(1), height, self.overlap)
         if residual != 0:
             # get the residual patch and add it to the fold
-            remaining_height = torch.zeros(3, 1, self.image.size(2), height) # padding
+            remaining_height = torch.zeros(nbands, 1, self.image.size(2), height) # padding
             remaining_height[:,:,:,:residual] = self.image[:,-residual:,:].permute(0,2,1).unsqueeze(1)
 
             height_fold = torch.cat((height_fold,remaining_height),dim=1)
@@ -102,7 +102,7 @@ class ImageToPatches:
         # if non-perfect division on width, the same
         residual = self._img_residual(self.image.size(2), width, self.overlap)
         if residual != 0:
-            remaining_width = torch.zeros(3, fold.shape[1], 1, height, width) # padding
+            remaining_width = torch.zeros(nbands, fold.shape[1], 1, height, width) # padding
             remaining_width[:,:,:,:,:residual] = height_fold[:,:,-residual:,:].permute(0,1,3,2).unsqueeze(2)
 
             fold = torch.cat((fold,remaining_width),dim=2)
